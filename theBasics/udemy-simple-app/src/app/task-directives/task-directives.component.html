@@ -1,0 +1,22 @@
+<h2>Task Three: Directives</h2>
+
+<ol>
+    <li>Add A button which says 'Display Details'</li>
+    <li>Add a paragraph with any content of your choice (e.g. 'Secret Password = tuna')</li>
+    <li>Toggle the displaying of that paragraph with the button created in the first step</li>
+    <li>Log all button clicks in an array and output that array below the secret paragraph (maybe log a timestamp or simply an incrementing number)</li>
+    <li>Starting at the 5th log item, give all future log items a blue background (via ngStyle) and white color (ngClass)</li>
+</ol>
+
+<button class="btn btn-primary" (click)="toggleView()">Display Details</button>
+
+<p [hidden]="hide">Details: Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt, dolore.</p>
+
+<ul *ngIf="viewToggleArray.length > 0">
+    <li 
+    *ngFor="let view of viewToggleArray; index as i"
+    [ngStyle]="i >= 4 && {'backgroundColor': 'CornflowerBlue'}" 
+    [ngClass]="{'white': i >= 4}"
+    >{{ view }} (Click count: {{ i + 1 }})</li>
+</ul>
+<hr>

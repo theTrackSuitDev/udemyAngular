@@ -1,0 +1,32 @@
+<div 
+    [ngClass]="{'alert-warning': status !== 'resolved', 'alert-success': status === 'resolved'}"
+    >
+        <p>{{"WARNING"}}</p>
+        <p>Problem detected on package {{ packageId }}</p>
+        <p>Issue status: {{ getStatus() }}</p>
+</div>
+
+<!-- <input 
+    type="text" 
+    placeholder="New status" 
+    #input 
+    (input)="updateInput($event)">   -->
+<input type="text" placeholder="New status" class="form-control" [(ngModel)]="currentInput" #input
+    [disabled]="!allowChange">
+
+<!-- <p>{{ currentInput }}</p> -->
+<p *ngIf="statusHasChanged" [ngStyle]="{backgroundColor: getColor()}">Status has changed to "{{ status }}"</p>
+<div>
+    <button class="btn btn-primary" (click)="changeStatus(input)" [disabled]="!allowChange">
+        Change status
+    </button>
+</div>
+
+<button class="btn btn-success" [disabled]="!allowResolve" (click)="onResolve()">
+    Resolve
+</button>
+
+<h4>Status History:</h4>
+<p *ngFor="let s of statusArray">{{ s }}</p>
+
+<hr>
