@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Ingredient } from '../../shared/igredient.model';
 
 @Component({
   selector: 'app-list',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrl: './list.component.css'
 })
 export class ListComponent {
-
+  @Input() ingredients: Ingredient[] = [];
 }
