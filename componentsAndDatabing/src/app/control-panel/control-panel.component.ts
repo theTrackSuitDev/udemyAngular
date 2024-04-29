@@ -9,14 +9,13 @@ export class ControlPanelComponent {
   @Output() serverCreated = new EventEmitter<{name: string, content: string}>();
   @Output('bpCreated') blueprintCreated = new EventEmitter<{name: string, content: string}>();
 
-  newServerName = '';
   newServerContent = '';
 
-  onAddServer() {
-    this.serverCreated.emit({name: this.newServerName, content: this.newServerContent});
+  onAddServer(inputElement: HTMLInputElement) {
+    this.serverCreated.emit({name: inputElement.value, content: this.newServerContent});
   }
 
-  onAddBlueprint() {
-    this.blueprintCreated.emit({name: this.newServerName, content: this.newServerContent});
+  onAddBlueprint(inputElement: HTMLInputElement) {
+    this.blueprintCreated.emit({name: inputElement.value, content: this.newServerContent});
   }
 }
